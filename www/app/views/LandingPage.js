@@ -10,6 +10,10 @@ app.views.LandingPage = Ext.extend(Ext.Panel, {
                 listeners: {
                     'tap': function() {
                         console.log('tapped new score card.');
+                        Ext.dispatch({
+                            controller: app.controllers.main,
+                            action: 'newScore'
+                        });
                     }
                 }
             }
