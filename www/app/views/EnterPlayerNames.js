@@ -51,8 +51,8 @@ app.views.EnterPlayerNames = Ext.extend(Ext.form.FormPanel, {
         label: '玩家四',
         xtype: 'textfield'
     }], 
-    updateWithRecord: function(playerList) {
-        console.log('updateWithRecord in enterPlayerNames');
+    getReady: function() {
+        console.log('getReady in enterPlayerNames');
         var toolbar = this.getDockedItems()[0];
         toolbar.getComponent('apply').form = this;
     }

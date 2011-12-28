@@ -23,7 +23,7 @@ app.views.LandingPage = Ext.extend(Ext.Panel, {
     items: [
         {
             xtype: 'panel',
-            html: '鋤大二 記分器'
+            html: '鋤大D 記分器'
         }
     ]
 });
