@@ -1,7 +1,6 @@
 app.controllers.main = new Ext.Controller({
     newScore: function(options) {
         console.log('newScore controller.');
-        app.views.enterPlayerNames.getReady();
         app.views.viewport.setActiveItem(app.views.enterPlayerNames);
     }, 
     backFromEnterPlayerNames: function(options) {
@@ -18,11 +17,5 @@ app.controllers.main = new Ext.Controller({
         while(playerList.data.items.length>0) playerList.removeAt(0);
         playerList.create(options.data);
         app.views.viewport.setActiveItem(app.views.scoreboard);       
-    },
-    setRoundNumber: function(options) {
-        console.log('setRoundNumber controller.');
-        var roundNum = app.stores.playerList.data.items.length;
-        var toolbar = app.views.scoreboard.getDockedItems()[0];
-        toolbar.getComponent('addRound').setText('第 '+roundNum+' 局');
     }    
 })

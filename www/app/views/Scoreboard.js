@@ -31,10 +31,9 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
                         //});
                     }, 
                     'afterrender': function() {
-                        Ext.dispatch({
-                            controller: app.controllers.main,
-                            action: 'setRoundNumber'
-                        })
+                        var roundNum = app.stores.playerList.data.items.length;
+                        this.setText('第 '+roundNum+' 局');
+
                     }
                 }
             }

@@ -51,9 +51,11 @@ app.views.EnterPlayerNames = Ext.extend(Ext.form.FormPanel, {
         label: '玩家四',
         xtype: 'textfield'
     }], 
-    getReady: function() {
-        console.log('getReady in enterPlayerNames');
-        var toolbar = this.getDockedItems()[0];
-        toolbar.getComponent('apply').form = this;
+    listeners: {
+        'afterrender': function() {
+            console.log('enterplayernames -> afterrender');
+            var toolbar = this.getDockedItems()[0];
+            toolbar.getComponent('apply').form = this;
+        }
     }
 });
