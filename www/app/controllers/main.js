@@ -16,6 +16,16 @@ app.controllers.main = new Ext.Controller({
         // clean up storage, if any. Then add. 
         while(playerList.data.items.length>0) playerList.removeAt(0);
         playerList.create(options.data);
+
+        // todo: testing only
+        while(playerList.data.items.length>0) playerList.removeAt(0);
+        playerList.create({p1:'Weiran',p2:'Jinzi',p3:'Helen',p4:'Peggy'});
+        // todo: end
+        
         app.views.viewport.setActiveItem(app.views.scoreboard);       
-    }    
+    }, 
+    goToAddRound: function(options) {
+        console.log('main.js -> goToAddRound');
+        app.views.viewport.setActiveItem(app.views.addRound);
+    }
 })

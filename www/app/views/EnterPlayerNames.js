@@ -52,8 +52,8 @@ app.views.EnterPlayerNames = Ext.extend(Ext.form.FormPanel, {
         xtype: 'textfield'
     }], 
     listeners: {
-        'afterrender': function() {
-            console.log('enterplayernames -> afterrender');
+        'activate': function() {
+            console.log('EnterPlayerNames.js -> activate');
             var toolbar = this.getDockedItems()[0];
             toolbar.getComponent('apply').form = this;
         }

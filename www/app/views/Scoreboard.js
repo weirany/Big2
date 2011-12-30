@@ -24,11 +24,10 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
                 ui: 'action',
                 listeners: {
                     'tap': function () {
-                        //Ext.dispatch({
-                        //    controller: app.controllers.main,
-                        //    action: 'doneFromEnterPlayerNames',
-                        //    data: this.form.getValues()
-                        //});
+                        Ext.dispatch({
+                            controller: app.controllers.main,
+                            action: 'goToAddRound'
+                        });
                     }, 
                     'afterrender': function() {
                         var roundNum = app.stores.playerList.data.items.length;
