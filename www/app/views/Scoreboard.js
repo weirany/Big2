@@ -43,10 +43,10 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
         xtype: 'list',
         store: app.stores.rounds,
         itemTpl: [
-            '<div style="float:left;width:23%;text-align:center">{p1Total}</div>',
-            '<div style="float:left;width:23%;text-align:center">{p2Total}</div>',
-            '<div style="float:left;width:23%;text-align:center">{p3Total}</div>',
-            '<div style="float:left;width:23%;text-align:center">{p4Total}</div>'
+            '<div class="roundList">{p1Total}</div>',
+            '<div class="roundList">{p2Total}</div>',
+            '<div class="roundList">{p3Total}</div>',
+            '<div class="roundList">{p4Total}</div>'
         ]
     }]
 });
