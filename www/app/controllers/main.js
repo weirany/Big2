@@ -27,5 +27,33 @@ app.controllers.main = new Ext.Controller({
     goToAddRound: function(options) {
         console.log('main.js -> goToAddRound');
         app.views.viewport.setActiveItem(app.views.addRound);
-    }
+    },
+    addRound: function(options) {
+        console.log('main.js -> addRound');
+        var numOfCards = options.numOfCards;
+        //// data validation
+        //var numOfWinner = 0;
+        //if(numOfCards.p1Num == 0) numOfWinner++;
+        //if(numOfCards.p2Num == 0) numOfWinner++;
+        //if(numOfCards.p3Num == 0) numOfWinner++;
+        //if(numOfCards.p4Num == 0) numOfWinner++;
+        //if(numOfWinner!=1) Ext.Msg.alert('提示', '每局只能有一個贏家', Ext.emptyFn);
+        //else {
+        //    
+        //}
+        var newIndex = app.stores.rounds.getCount();
+        app.stores.rounds.add({
+            p1Num : numOfCards.p1Num,
+            p2Num : numOfCards.p2Num,
+            p3Num : numOfCards.p3Num,
+            p4Num : numOfCards.p4Num,
+            p1Total : 0,
+            p2Total : 0,
+            p3Total : 0,
+            p4Total : 0            
+        });
+        app.stores.rounds.updateTotal(newIndex);
+        
+        app.views.viewport.setActiveItem(app.views.scoreboard);
+    }    
 })

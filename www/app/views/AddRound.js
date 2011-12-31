@@ -23,11 +23,16 @@ app.views.AddRound = Ext.extend(Ext.Panel, {
                 ui: 'action',
                 listeners: {
                     'tap': function () {
-                        //Ext.dispatch({
-                        //    controller: app.controllers.main,
-                        //    action: 'doneFromEnterPlayerNames',
-                        //    data: this.form.getValues()
-                        //});
+                        Ext.dispatch({
+                            controller: app.controllers.main,
+                            action: 'addRound',
+                            numOfCards: {
+                                p1Num : parseInt(Ext.getCmp('p1Num').getValue()),
+                                p2Num : parseInt(Ext.getCmp('p2Num').getValue()),
+                                p3Num : parseInt(Ext.getCmp('p3Num').getValue()),
+                                p4Num : parseInt(Ext.getCmp('p4Num').getValue())                                
+                            }
+                        });
                     }
                 }
             }
