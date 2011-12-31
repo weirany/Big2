@@ -30,12 +30,23 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
                         });
                     }, 
                     'afterrender': function() {
-                        var roundNum = app.stores.playerList.data.items.length;
-                        this.setText('第 '+roundNum+' 局');
+                        var nextRoundNumber = app.stores.rounds.getCount() + 1;
+                        this.setText('第 '+nextRoundNumber+' 局');
 
                     }
                 }
             }
+        ]
+    }],
+    layout: 'fit', 
+    items:[{
+        xtype: 'list',
+        store: app.stores.rounds,
+        itemTpl: [
+            '<div style="float:left;width:23%;text-align:center">{p1Total}</div>',
+            '<div style="float:left;width:23%;text-align:center">{p2Total}</div>',
+            '<div style="float:left;width:23%;text-align:center">{p3Total}</div>',
+            '<div style="float:left;width:23%;text-align:center">{p4Total}</div>'
         ]
     }]
 });

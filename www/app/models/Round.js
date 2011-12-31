@@ -19,6 +19,14 @@ app.stores.rounds = new Ext.data.Store({
     model: 'app.models.Round'
 });
 
+// todo: for testing only
+app.stores.rounds.add({
+    p1Num:1,p2Num:2,p3Num:3,p4Num:4,p1Total:1,p2Total:2,p3Total:3,p4Total:4 
+}, {
+    p1Num:2,p2Num:3,p3Num:4,p4Num:5,p1Total:300,p2Total:5,p3Total:70,p4Total:9000
+});
+// todo: end
+
 app.stores.rounds.updateTotal = function(startIndex) {
     console.log('round.js -> updateTotal: ' + startIndex);
     var endIndex = app.stores.rounds.getCount() - 1;
