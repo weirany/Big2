@@ -18,11 +18,12 @@ app.views.AddRound = Ext.extend(Ext.Panel, {
             },
             {xtype:'spacer'},
             {
-                id: 'apply',
+                id: 'addRoundApply',
                 text: '保存',
                 ui: 'action',
                 listeners: {
                     'tap': function () {
+                        console.log('AddRound.js -> addRoundApply button dispatch');
                         Ext.dispatch({
                             controller: app.controllers.main,
                             action: 'addRound',
@@ -31,7 +32,8 @@ app.views.AddRound = Ext.extend(Ext.Panel, {
                                 p2Num : parseInt(Ext.getCmp('p2Num').getValue()),
                                 p3Num : parseInt(Ext.getCmp('p3Num').getValue()),
                                 p4Num : parseInt(Ext.getCmp('p4Num').getValue())                                
-                            }
+                            }, 
+                            roundNum: this.roundNum
                         });
                     }
                 }
@@ -87,15 +89,43 @@ app.views.AddRound = Ext.extend(Ext.Panel, {
     listeners: {
         'activate': function() {
             console.log('addRound.js -> activate');
-            var updateLabel = function(labelEl, newText) {
-                labelEl.dom.children[0].innerHTML = newText;
+
+            var updateLabel = function(selectfieldId, newText) {
+                Ext.getCmp(selectfieldId).labelEl.dom.children[0].innerHTML = newText;
+            }; 
+
+            var updateNum = function(selectfieldId, numOfCards) {
+                Ext.getCmp(selectfieldId).setValue(numOfCards);
             }
-            // set text labels
-            names = app.stores.playerList; 
-            updateLabel(Ext.getCmp('p1Num').labelEl, names.data.items[0].data.p1);
-            updateLabel(Ext.getCmp('p2Num').labelEl, names.data.items[0].data.p2);
-            updateLabel(Ext.getCmp('p3Num').labelEl, names.data.items[0].data.p3);
-            updateLabel(Ext.getCmp('p4Num').labelEl, names.data.items[0].data.p4);
+
+            var names = app.stores.playerList; 
+            updateLabel('p1Num', names.data.items[0].data.p1);
+            updateLabel('p2Num', names.data.items[0].data.p2);
+            updateLabel('p3Num', names.data.items[0].data.p3);
+            updateLabel('p4Num', names.data.items[0].data.p4);
+            if(!this.isAdd) {
+                var round = app.stores.rounds.getAt(this.roundNum-1);
+                updateNum('p1Num', round.get('p1Num'));
+                updateNum('p2Num', round.get('p2Num'));
+                updateNum('p3Num', round.get('p3Num'));
+                updateNum('p4Num', round.get('p4Num'));
+            }
+            else {
+                updateNum('p1Num', 0);
+                updateNum('p2Num', 0);
+                updateNum('p3Num', 0);
+                updateNum('p4Num', 0);
+            }
+            
+            var toolbar = this.getDockedItems()[0];
+            toolbar.getComponent('addRoundApply').roundNum = this.roundNum;
         }
+    }, 
+    getReady: function(roundNum) {
+        console.log('AddRound.js -> getReady: ' + roundNum);
+        this.roundNum = roundNum;
+        // add or edit?
+        if(roundNum > app.stores.rounds.getCount()) this.isAdd = true;
+        else this.isAdd = false;
     }
 });

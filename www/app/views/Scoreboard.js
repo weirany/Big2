@@ -20,7 +20,7 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
             {xtype:'spacer'},
             {
                 id: 'addRound',
-                text: '',
+                text: '+',
                 ui: 'action',
                 listeners: {
                     'tap': function () {
@@ -28,14 +28,18 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
                             controller: app.controllers.main,
                             action: 'goToAddRound'
                         });
-                    }, 
-                    'afterrender': function() {
-                        var nextRoundNumber = app.stores.rounds.getCount() + 1;
-                        this.setText('第 '+nextRoundNumber+' 局');
-
                     }
                 }
             }
+        ]
+    }, {
+        xtype: 'list',
+        store: app.stores.playerList,
+        itemTpl: [
+            '<div class="roundList">{p1}</div>',
+            '<div class="roundList">{p2}</div>',
+            '<div class="roundList">{p3}</div>',
+            '<div class="roundList">{p4}</div>'
         ]
     }],
     layout: 'fit', 
@@ -47,6 +51,15 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
             '<div class="roundList">{p2Total}</div>',
             '<div class="roundList">{p3Total}</div>',
             '<div class="roundList">{p4Total}</div>'
-        ]
+        ], 
+        listeners: {
+            'itemTap': function(dataView, index) {
+                Ext.dispatch({
+                    controller: app.controllers.main,
+                    action: 'goToEditRound', 
+                    roundNum: index + 1
+                });
+            }
+        }
     }]
 });

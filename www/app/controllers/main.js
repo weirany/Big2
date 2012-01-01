@@ -26,7 +26,13 @@ app.controllers.main = new Ext.Controller({
     }, 
     goToAddRound: function(options) {
         console.log('main.js -> goToAddRound');
+        app.views.addRound.getReady(app.stores.rounds.getCount()+1);
         app.views.viewport.setActiveItem(app.views.addRound);
+    },
+    goToEditRound: function(options) {
+        console.log('main.js -> goToEditRound | options.roundNum: ' + options.roundNum);
+        app.views.addRound.getReady(options.roundNum);
+        app.views.viewport.setActiveItem(app.views.addRound);        
     },
     addRound: function(options) {
         console.log('main.js -> addRound');
@@ -37,23 +43,37 @@ app.controllers.main = new Ext.Controller({
         //if(numOfCards.p2Num == 0) numOfWinner++;
         //if(numOfCards.p3Num == 0) numOfWinner++;
         //if(numOfCards.p4Num == 0) numOfWinner++;
-        //if(numOfWinner!=1) Ext.Msg.alert('提示', '每局只能有一個贏家', Ext.emptyFn);
+        //if(numOfWinner!=1) Ext.Msg.alert('提示', '每局只能有一個贏家(剩牌為0)', Ext.emptyFn);
         //else {
         //    
         //}
-        var newIndex = app.stores.rounds.getCount();
-        app.stores.rounds.add({
-            p1Num : numOfCards.p1Num,
-            p2Num : numOfCards.p2Num,
-            p3Num : numOfCards.p3Num,
-            p4Num : numOfCards.p4Num,
-            p1Total : 0,
-            p2Total : 0,
-            p3Total : 0,
-            p4Total : 0            
-        });
-        app.stores.rounds.updateTotal(newIndex);
+        var index = options.roundNum - 1;
+        console.log('main.js -> addRound | options.roundNum: ' + options.roundNum);
+        if(index > app.stores.rounds.getCount()-1) {
+            app.stores.rounds.add({
+                p1Num : numOfCards.p1Num,
+                p2Num : numOfCards.p2Num,
+                p3Num : numOfCards.p3Num,
+                p4Num : numOfCards.p4Num,
+                p1Total : 0,
+                p2Total : 0,
+                p3Total : 0,
+                p4Total : 0
+            });
+        }
+        else {
+            var round = app.stores.rounds.getAt(index);
+            round.set('p1Num', numOfCards.p1Num);
+            round.set('p2Num', numOfCards.p2Num);
+            round.set('p3Num', numOfCards.p3Num);
+            round.set('p4Num', numOfCards.p4Num);
+            round.set('p1Total', 0);
+            round.set('p1Total', 0);
+            round.set('p1Total', 0);
+            round.set('p1Total', 0);
+        }
+        app.stores.rounds.updateTotal(index);
         
         app.views.viewport.setActiveItem(app.views.scoreboard);
-    }    
+    }
 })
