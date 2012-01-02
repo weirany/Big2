@@ -10,7 +10,3 @@ app.models.PlayerList = Ext.regModel('app.models.PlayerList', {
         id  : 'playerList'
     }
 });
-
-app.stores.playerList = new Ext.data.Store({
-    model: 'app.models.PlayerList'
-});
