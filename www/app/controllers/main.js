@@ -34,6 +34,13 @@ app.controllers.main = new Ext.Controller({
         app.views.addRound.getReady(options.roundNum);
         app.views.viewport.setActiveItem(app.views.addRound);        
     },
+    backFromAddRound: function(options) {
+        console.log('main.js -> backFromAddRound');
+        app.views.viewport.setActiveItem(
+            app.views.scoreboard,
+            {type:'slide', direction:'right'}
+        );        
+    }, 
     addRound: function(options) {
         console.log('main.js -> addRound');
         var numOfCards = options.numOfCards;
@@ -75,5 +82,13 @@ app.controllers.main = new Ext.Controller({
         app.stores.rounds.updateTotal(index);
         
         app.views.viewport.setActiveItem(app.views.scoreboard);
+    },
+    end: function(options) {
+        console.log('c -> main.js -> end');
+        app.views.viewport.setActiveItem(
+            app.views.landingPage,
+            {type:'slide', direction:'right'}
+        );
+        
     }
 })

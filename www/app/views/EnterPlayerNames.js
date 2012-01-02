@@ -4,7 +4,6 @@ app.views.EnterPlayerNames = Ext.extend(Ext.form.FormPanel, {
         title: '玩家名稱',
         items: [
             {
-                id: 'cancel',
                 text: '返回',
                 ui: 'back',
                 listeners: {
@@ -18,15 +17,15 @@ app.views.EnterPlayerNames = Ext.extend(Ext.form.FormPanel, {
             },
             {xtype:'spacer'},
             {
-                id: 'apply',
                 text: '開始',
                 ui: 'action',
                 listeners: {
                     'tap': function () {
+                        console.log('EnterPlayerNames.js -> start button dispatch');
                         Ext.dispatch({
                             controller: app.controllers.main,
-                            action: 'doneFromEnterPlayerNames',
-                            data: this.form.getValues()
+                            action: 'doneFromEnterPlayerNames', 
+                            data: this.up('panel').getValues()
                         });
                     }
                 }
@@ -50,12 +49,5 @@ app.views.EnterPlayerNames = Ext.extend(Ext.form.FormPanel, {
         name : 'p4',
         label: '玩家四',
         xtype: 'textfield'
-    }], 
-    listeners: {
-        'activate': function() {
-            console.log('EnterPlayerNames.js -> activate');
-            var toolbar = this.getDockedItems()[0];
-            toolbar.getComponent('apply').form = this;
-        }
-    }
+    }]
 });
