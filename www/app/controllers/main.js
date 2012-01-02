@@ -1,6 +1,7 @@
 app.controllers.main = new Ext.Controller({
     newScore: function(options) {
         console.log('newScore controller.');
+        app.views.enterPlayerNames = new app.views.EnterPlayerNames();
         app.views.viewport.setActiveItem(app.views.enterPlayerNames);
     }, 
     backFromEnterPlayerNames: function(options) {
@@ -12,15 +13,22 @@ app.controllers.main = new Ext.Controller({
     },
     doneFromEnterPlayerNames: function(options) {
         console.log('doneFromEnterPlayerNames controller.');
+        // data validatoin
+        if(options.data.p1=='' || options.data.p2==''
+           || options.data.p3=='' || options.data.p4=='') {
+            Ext.Msg.alert('提示', '請填寫四位玩家名稱', Ext.emptyFn);
+            return;            
+        }
+        
         var playerList = app.stores.playerList;
         // clean up storage, if any. Then add. 
         while(playerList.data.items.length>0) playerList.removeAt(0);
         playerList.create(options.data);
 
-        // todo: testing only
-        while(playerList.data.items.length>0) playerList.removeAt(0);
-        playerList.create({p1:'Weiran',p2:'Jinzi',p3:'Helen',p4:'Peggy'});
-        // todo: end
+        //// todo: testing only
+        //while(playerList.data.items.length>0) playerList.removeAt(0);
+        //playerList.create({p1:'Weiran',p2:'Jinzi',p3:'Helen',p4:'Peggy'});
+        //// todo: end
         
         app.views.viewport.setActiveItem(app.views.scoreboard);       
     }, 
@@ -44,16 +52,17 @@ app.controllers.main = new Ext.Controller({
     addRound: function(options) {
         console.log('main.js -> addRound');
         var numOfCards = options.numOfCards;
-        //// data validation
-        //var numOfWinner = 0;
-        //if(numOfCards.p1Num == 0) numOfWinner++;
-        //if(numOfCards.p2Num == 0) numOfWinner++;
-        //if(numOfCards.p3Num == 0) numOfWinner++;
-        //if(numOfCards.p4Num == 0) numOfWinner++;
-        //if(numOfWinner!=1) Ext.Msg.alert('提示', '每局只能有一個贏家(剩牌為0)', Ext.emptyFn);
-        //else {
-        //    
-        //}
+        // data validation
+        var numOfWinner = 0;
+        if(numOfCards.p1Num == 0) numOfWinner++;
+        if(numOfCards.p2Num == 0) numOfWinner++;
+        if(numOfCards.p3Num == 0) numOfWinner++;
+        if(numOfCards.p4Num == 0) numOfWinner++;
+        if(numOfWinner!=1) {
+            Ext.Msg.alert('提示', '每局有一個贏家(剩牌數為0)', Ext.emptyFn);
+            return;
+        }
+     
         var index = options.roundNum - 1;
         console.log('main.js -> addRound | options.roundNum: ' + options.roundNum);
         if(index > app.stores.rounds.getCount()-1) {
@@ -106,6 +115,17 @@ app.controllers.main = new Ext.Controller({
     },
     saveSettings: function(options) {
         console.log('c -> main.js -> backFromSettings');
+        // data validation
+        var isValid = true;
+        if(options.config.x4!=0 &&
+           (options.config.x4<=options.config.x3 || options.config.x4<=options.config.x3)) isValid = false;
+        if(options.config.x3!=0 &&
+           options.config.x3<=options.config.x2) isValid = false;
+        if(!isValid) {
+            Ext.Msg.alert('提示', '除非禁用，否則必須符合：x4 > x3 > x2', Ext.emptyFn);
+            return;
+        }
+        
         var config = app.stores.config;
         config.x2 = options.config.x2;
         config.x3 = options.config.x3;
@@ -118,6 +138,9 @@ app.controllers.main = new Ext.Controller({
     },
     backFromMoney: function(options) {
         console.log('c -> main.js -> backFromMoney');
-        app.views.viewport.setActiveItem(app.views.scoreboard);                        
+        app.views.viewport.setActiveItem(
+            app.views.scoreboard, 
+            {type:'slide', direction:'right'}
+        );                        
     }
 })

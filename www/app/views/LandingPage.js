@@ -1,10 +1,8 @@
 app.views.LandingPage = Ext.extend(Ext.Panel, {
     dockedItems: [{
         xtype: 'toolbar',
-        title: '',
+        title: '鋤大D 記分助手',
         items: [{
-            xtype:'spacer'
-        },{
             text: '設置',
             ui: 'action',
             listeners: {
@@ -16,6 +14,8 @@ app.views.LandingPage = Ext.extend(Ext.Panel, {
                     });
                 }
             }
+        },{
+            xtype:'spacer'
         }, {
             text: '開始記分',
             ui: 'action',
@@ -33,6 +33,6 @@ app.views.LandingPage = Ext.extend(Ext.Panel, {
     layout: 'fit',
     items: [{
         xtype: 'panel',
-        html: '鋤大D 記分器'
+        html: ' '
     }]
 });

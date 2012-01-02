@@ -21,15 +21,6 @@ app.views.Money = Ext.extend(Ext.Panel, {
     items:[{
         xtype: 'panel',
         html: ' '
-        //listeners: {
-        //    'itemTap': function(dataView, index) {
-        //        Ext.dispatch({
-        //            controller: app.controllers.main,
-        //            action: 'goToEditRound', 
-        //            roundNum: index + 1
-        //        });
-        //    }
-        //}
     }],
     listeners: {
         'activate': function() {
