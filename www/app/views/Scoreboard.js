@@ -2,33 +2,42 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
     dockedItems: [{
         xtype: 'toolbar',
         title: '記分牌',
-        items: [
-            {
-                text: '結束',
-                ui: 'back',
-                listeners: {
-                    'tap': function () {
-                        Ext.dispatch({
-                            controller: app.controllers.main,
-                            action: 'end'
-                        });
-                    }
-                }
-            }, 
-            {xtype:'spacer'},
-            {
-                text: '+',
-                ui: 'action',
-                listeners: {
-                    'tap': function () {
-                        Ext.dispatch({
-                            controller: app.controllers.main,
-                            action: 'goToAddRound'
-                        });
-                    }
+        items: [{
+            text: '結束',
+            ui: 'back',
+            listeners: {
+                'tap': function () {
+                    Ext.dispatch({
+                        controller: app.controllers.main,
+                        action: 'end'
+                    });
                 }
             }
-        ]
+        }, {
+            xtype:'spacer'
+        }, {
+            text: '$',
+            ui: 'action',
+            listeners: {
+                'tap': function () {
+                    Ext.dispatch({
+                        controller: app.controllers.main,
+                        action: 'goToMoney'
+                    });
+                }
+            }
+        }, {
+            text: '+',
+            ui: 'action',
+            listeners: {
+                'tap': function () {
+                    Ext.dispatch({
+                        controller: app.controllers.main,
+                        action: 'goToAddRound'
+                    });
+                }
+            }
+        }]
     }, {
         xtype: 'list',
         store: app.stores.playerList,

@@ -8,7 +8,8 @@ app.views.Viewport = Ext.extend(Ext.Panel, {
             enterPlayerNames: new app.views.EnterPlayerNames(),
             scoreboard: new app.views.Scoreboard(),
             addRound: new app.views.AddRound(),
-            settings: new app.views.Settings()
+            settings: new app.views.Settings(),
+            money: new app.views.Money()
         });
         Ext.apply(this, {
             items: [
@@ -16,7 +17,8 @@ app.views.Viewport = Ext.extend(Ext.Panel, {
                 app.views.enterPlayerNames, 
                 app.views.scoreboard,
                 app.views.addRound,
-                app.views.settings
+                app.views.settings,
+                app.views.money
             ]
         });
         app.views.Viewport.superclass.initComponent.apply(this, arguments);

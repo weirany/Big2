@@ -3,3 +3,17 @@
     width: 25%;
     text-align: center;
 }
+
+.moneyName {
+    float: left;
+    width: 50%;
+    text-align: center;
+    padding: 5px;
+}
+
+.moneyAmount {
+    float: left;
+    width: 50%;
+    text-align: center;
+    padding: 5px;
+}

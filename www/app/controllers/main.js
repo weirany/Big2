@@ -111,5 +111,13 @@ app.controllers.main = new Ext.Controller({
         config.x3 = options.config.x3;
         config.x4 = options.config.x4;
         app.views.viewport.setActiveItem(app.views.landingPage);        
+    },
+    goToMoney: function(options) {
+        console.log('c -> main.js -> goToMoney');
+        app.views.viewport.setActiveItem(app.views.money);                
+    },
+    backFromMoney: function(options) {
+        console.log('c -> main.js -> backFromMoney');
+        app.views.viewport.setActiveItem(app.views.scoreboard);                        
     }
 })
