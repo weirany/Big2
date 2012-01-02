@@ -85,6 +85,9 @@ app.controllers.main = new Ext.Controller({
     },
     end: function(options) {
         console.log('c -> main.js -> end');
+        // reset stores
+        while(app.stores.playerList.getCount()) app.stores.playerList.removeAt(0);
+        while(app.stores.rounds.getCount()) app.stores.rounds.removeAt(0);
         app.views.viewport.setActiveItem(
             app.views.landingPage,
             {type:'slide', direction:'right'}

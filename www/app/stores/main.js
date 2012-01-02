@@ -22,21 +22,35 @@ app.stores.rounds.add({
 
 app.stores.rounds.updateTotal = function(startIndex) {
     console.log('round.js -> updateTotal: ' + startIndex);
+    
+    this.withX = function(num) {
+        if(app.stores.config.x4!=0 && num>=app.stores.config.x4) return num*4;
+        else if(app.stores.config.x3!=0 && num>=app.stores.config.x3) return num*3;
+        else if(app.stores.config.x2!=0 && num>=app.stores.config.x2) return num*2;
+        else return num;
+    }
+    
     var endIndex = app.stores.rounds.getCount() - 1;
     if(endIndex==-1) return;    // skip if no record
     var currentRec = app.stores.rounds.getAt(startIndex);
+    // calculate with x2, x3, x4
+    var p1RoundFinal = this.withX(currentRec.get('p1Num'));
+    var p2RoundFinal = this.withX(currentRec.get('p2Num'));
+    var p3RoundFinal = this.withX(currentRec.get('p3Num'));
+    var p4RoundFinal = this.withX(currentRec.get('p4Num'));
+    
     if(startIndex==0) {
-        currentRec.set('p1Total', currentRec.get('p1Num'));
-        currentRec.set('p2Total', currentRec.get('p2Num'));
-        currentRec.set('p3Total', currentRec.get('p3Num'));
-        currentRec.set('p4Total', currentRec.get('p4Num'));
+        currentRec.set('p1Total', p1RoundFinal);
+        currentRec.set('p2Total', p2RoundFinal);
+        currentRec.set('p3Total', p3RoundFinal);
+        currentRec.set('p4Total', p4RoundFinal);
     }
     else {
         var prevRec = app.stores.rounds.getAt(startIndex-1);
-        currentRec.set('p1Total', currentRec.get('p1Num') + prevRec.get('p1Total'));
-        currentRec.set('p2Total', currentRec.get('p2Num') + prevRec.get('p2Total'));
-        currentRec.set('p3Total', currentRec.get('p3Num') + prevRec.get('p3Total'));
-        currentRec.set('p4Total', currentRec.get('p4Num') + prevRec.get('p4Total'));
+        currentRec.set('p1Total', p1RoundFinal + prevRec.get('p1Total'));
+        currentRec.set('p2Total', p2RoundFinal + prevRec.get('p2Total'));
+        currentRec.set('p3Total', p3RoundFinal + prevRec.get('p3Total'));
+        currentRec.set('p4Total', p4RoundFinal + prevRec.get('p4Total'));
     }
     // recusive if there are more records
     if(startIndex<endIndex) {

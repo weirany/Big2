@@ -17,7 +17,7 @@ app.views.LandingPage = Ext.extend(Ext.Panel, {
                     }
                 }
             }, {
-                text: '新記分',
+                text: '開始記分',
                 ui: 'action',
                 listeners: {
                     'tap': function() {
