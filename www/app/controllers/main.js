@@ -89,6 +89,24 @@ app.controllers.main = new Ext.Controller({
             app.views.landingPage,
             {type:'slide', direction:'right'}
         );
-        
+    },
+    goToSettings: function(options) {
+        console.log('c -> main.js -> toToSettings');
+        app.views.viewport.setActiveItem(app.views.settings);        
+    },
+    backFromSettings: function(options) {
+        console.log('c -> main.js -> backFromSettings');
+        app.views.viewport.setActiveItem(
+            app.views.landingPage,
+            {type:'slide', direction:'right'}
+        );
+    },
+    saveSettings: function(options) {
+        console.log('c -> main.js -> backFromSettings');
+        var config = app.stores.config;
+        config.x2 = options.config.x2;
+        config.x3 = options.config.x3;
+        config.x4 = options.config.x4;
+        app.views.viewport.setActiveItem(app.views.landingPage);        
     }
 })

@@ -26,10 +26,10 @@ app.views.AddRound = Ext.extend(Ext.Panel, {
                             controller: app.controllers.main,
                             action: 'addRound',
                             numOfCards: {
-                                p1Num : parseInt(Ext.getCmp('p1Num').getValue()),
-                                p2Num : parseInt(Ext.getCmp('p2Num').getValue()),
-                                p3Num : parseInt(Ext.getCmp('p3Num').getValue()),
-                                p4Num : parseInt(Ext.getCmp('p4Num').getValue())                                
+                                p1Num : this.up('panel').items.items[0].getValue(), 
+                                p2Num : this.up('panel').items.items[1].getValue(),
+                                p3Num : this.up('panel').items.items[2].getValue(),
+                                p4Num : this.up('panel').items.items[3].getValue()                                
                             }, 
                             roundNum: this.up('panel').roundNum
                         });
@@ -40,7 +40,6 @@ app.views.AddRound = Ext.extend(Ext.Panel, {
     }],
     items: [
         {
-            id: 'p1Num', 
             xtype: 'selectfield',
             name: 'p1Num', 
             label: 'p1',
@@ -51,7 +50,6 @@ app.views.AddRound = Ext.extend(Ext.Panel, {
                       {text:'12',value:'12'},{text:'13',value:'13'}]
         },
         {
-            id: 'p2Num', 
             xtype: 'selectfield',
             name: 'p2Num', 
             label: 'p2',
@@ -62,7 +60,6 @@ app.views.AddRound = Ext.extend(Ext.Panel, {
                       {text:'12',value:'12'},{text:'13',value:'13'}]
         },
         {
-            id: 'p3Num', 
             xtype: 'selectfield',
             name: 'p3Num', 
             label: 'p3',
@@ -73,7 +70,6 @@ app.views.AddRound = Ext.extend(Ext.Panel, {
                       {text:'12',value:'12'},{text:'13',value:'13'}]
         },
         {
-            id: 'p4Num', 
             xtype: 'selectfield',
             name: 'p4Num', 
             label: 'p4',

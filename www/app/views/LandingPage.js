@@ -5,6 +5,18 @@ app.views.LandingPage = Ext.extend(Ext.Panel, {
         items: [
             {xtype:'spacer'},
             {
+                text: '設置',
+                ui: 'action',
+                listeners: {
+                    'tap': function() {
+                        console.log('LandingPage.js -> setttings tapped');
+                        Ext.dispatch({
+                            controller: app.controllers.main,
+                            action: 'goToSettings'
+                        });
+                    }
+                }
+            }, {
                 text: '新記分',
                 ui: 'action',
                 listeners: {
