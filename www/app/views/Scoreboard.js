@@ -7,13 +7,35 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
             ui: 'back',
             listeners: {
                 'tap': function () {
-                    Ext.dispatch({
-                        controller: app.controllers.main,
-                        action: 'end'
-                    });
+                    // confirm?
+                    Ext.Msg.confirm(
+                        '注意',
+                        '清空之前所有牌局。確定結束？',
+                        function(btn) {
+                            if(btn == 'yes') {
+                                Ext.dispatch({
+                                    controller: app.controllers.main,
+                                    action: 'end'
+                                });
+                            }
+                        },
+                        this
+                    );
                 }
             }
         }, {
+            text: '設置',
+            ui: 'action',
+            listeners: {
+                'tap': function() {
+                    console.log('Scoreboard.js -> setttings tapped');
+                    Ext.dispatch({
+                        controller: app.controllers.main,
+                        action: 'goToSettings'
+                    });
+                }
+            }
+        },{
             xtype:'spacer'
         }, {
             text: '$',

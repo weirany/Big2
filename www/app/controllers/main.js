@@ -91,6 +91,14 @@ app.controllers.main = new Ext.Controller({
         app.stores.rounds.updateTotal(index);
         
         app.views.viewport.setActiveItem(app.views.scoreboard);
+    
+        // if it's an 'insert', auto scroll to the last round in the list
+        if(options.roundNum == app.stores.rounds.getCount()) {
+            console.log('c -> main.js -> auto scroll to bottom');
+            var scroller = app.views.scoreboard.items.items[0].scroller;
+            scroller.updateBoundary();
+            scroller.scrollTo({x:0, y:-scroller.offsetBoundary.top}, true);
+        }
     },
     end: function(options) {
         console.log('c -> main.js -> end');
@@ -109,28 +117,25 @@ app.controllers.main = new Ext.Controller({
     backFromSettings: function(options) {
         console.log('c -> main.js -> backFromSettings');
         app.views.viewport.setActiveItem(
-            app.views.landingPage,
+            app.views.scoreboard,
             {type:'slide', direction:'right'}
         );
     },
     saveSettings: function(options) {
         console.log('c -> main.js -> backFromSettings');
-        // data validation
-        var isValid = true;
-        if(options.config.x4!=0 &&
-           (options.config.x4<=options.config.x3 || options.config.x4<=options.config.x3)) isValid = false;
-        if(options.config.x3!=0 &&
-           options.config.x3<=options.config.x2) isValid = false;
-        if(!isValid) {
-            Ext.Msg.alert('提示', '除非禁用，否則必須符合：x4 > x3 > x2', Ext.emptyFn);
-            return;
-        }
         
         var config = app.stores.config;
         config.x2 = options.config.x2;
         config.x3 = options.config.x3;
         config.x4 = options.config.x4;
-        app.views.viewport.setActiveItem(app.views.landingPage);        
+        
+        // re-calculate all based on new values
+        app.stores.rounds.updateTotal(0);
+        
+        app.views.viewport.setActiveItem(
+            app.views.scoreboard, 
+            {type:'slide', direction:'right'}
+        );                        
     },
     goToMoney: function(options) {
         console.log('c -> main.js -> goToMoney');
@@ -142,5 +147,14 @@ app.controllers.main = new Ext.Controller({
             app.views.scoreboard, 
             {type:'slide', direction:'right'}
         );                        
+    }, 
+    deleteRound: function(options) {
+        console.log('c -> main.js -> deleteRound ｜ options.roundNum: ' + options.roundNum);
+        app.stores.rounds.removeAt(options.roundNum-1);
+        if(app.stores.rounds.getCount() > 0) {
+            // re-calculate all rounds
+            app.stores.rounds.updateTotal(0);
+        }
+        app.views.viewport.setActiveItem(app.views.scoreboard);                                
     }
 })

@@ -2,38 +2,59 @@ app.views.Settings = Ext.extend(Ext.Panel, {
     dockedItems: [{
         xtype: 'toolbar',
         title: '設置',
-        items: [
-            {
-                text: '取消',
-                ui: 'back',
-                listeners: {
-                    'tap': function () {
-                        Ext.dispatch({
-                            controller: app.controllers.main,
-                            action: 'backFromSettings',
-                        });
-                    }
+        items: [{
+            text: '取消',
+            ui: 'back',
+            listeners: {
+                'tap': function () {
+                    Ext.dispatch({
+                        controller: app.controllers.main,
+                        action: 'backFromSettings',
+                    });
                 }
-            },
-            {xtype:'spacer'},
-            {
-                text: '保存',
-                ui: 'action',
-                listeners: {
-                    'tap': function () {
-                        Ext.dispatch({
-                            controller: app.controllers.main,
-                            action: 'saveSettings',
-                            config: {
-                                x2 : parseInt(this.up('panel').items.items[0].getValue()),
-                                x3 : parseInt(this.up('panel').items.items[1].getValue()),
-                                x4 : parseInt(this.up('panel').items.items[2].getValue())
-                            }
-                        });
+            }
+        }, {
+            xtype:'spacer'
+        }, {
+            text: '保存',
+            ui: 'action',
+            listeners: {
+                'tap': function () {
+                    // data validation
+                    this.x2 = parseInt(this.up('panel').items.items[0].getValue());
+                    this.x3 = parseInt(this.up('panel').items.items[1].getValue());
+                    this.x4 = parseInt(this.up('panel').items.items[2].getValue());
+                    var isValid = true;
+                    if(this.x4!=0 && (this.x4<=this.x3 || this.x4<=this.x3)) isValid = false;
+                    if(this.x3!=0 && this.x3<=this.x2) isValid = false;
+                    if(!isValid) {
+                        Ext.Msg.alert('提示', '除非禁用，否則必須符合：x4 > x3 > x2', Ext.emptyFn);
+                        return;
+                    }
+                    else {
+                        // confirm?
+                        Ext.Msg.confirm(
+                            '注意',
+                            '新設置會對所有牌局生效，包括之前的。確定更改？',
+                            function(btn) {
+                                if(btn == 'yes') {
+                                    Ext.dispatch({
+                                        controller: app.controllers.main,
+                                        action: 'saveSettings',
+                                        config: {
+                                            x2 : this.x2,
+                                            x3 : this.x3,
+                                            x4 : this.x4
+                                        }
+                                    });
+                                }
+                            },
+                            this
+                        );
                     }
                 }
             }
-        ]
+        }]
     }], 
     items: [{
         xtype: 'selectfield',
