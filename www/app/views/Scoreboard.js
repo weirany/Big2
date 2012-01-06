@@ -24,6 +24,19 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
                 }
             }
         }, {
+            text: '$',
+            ui: 'action',
+            listeners: {
+                'tap': function () {
+                    Ext.dispatch({
+                        controller: app.controllers.main,
+                        action: 'goToMoney'
+                    });
+                }
+            }
+        },{
+            xtype:'spacer'
+        }, {
             text: '設置',
             ui: 'action',
             listeners: {
@@ -32,19 +45,6 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
                     Ext.dispatch({
                         controller: app.controllers.main,
                         action: 'goToSettings'
-                    });
-                }
-            }
-        },{
-            xtype:'spacer'
-        }, {
-            text: '$',
-            ui: 'action',
-            listeners: {
-                'tap': function () {
-                    Ext.dispatch({
-                        controller: app.controllers.main,
-                        action: 'goToMoney'
                     });
                 }
             }

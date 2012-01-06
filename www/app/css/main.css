@@ -17,3 +17,26 @@
     text-align: center;
     padding: 5px;
 }
+
+.landingTitle {
+    letter-spacing: -1px;
+    font-size: 26px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.landingSubTitle {
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+}
+
+.landingSmall {
+    font-size: 14px;
+    color: #999;
+    text-align: right;
+    padding: 15px;
+}
