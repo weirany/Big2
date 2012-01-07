@@ -4,7 +4,7 @@
 
 build/
 
-*.xcodeproj/
+*.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 
 *.mode1v3
