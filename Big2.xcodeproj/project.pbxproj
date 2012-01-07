@@ -34,6 +34,7 @@
 		1BF1C6E914A96673001D2F84 /* Capture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1BF1C6E814A96673001D2F84 /* Capture.bundle */; };
 		1BF1C6EB14A96673001D2F84 /* PhoneGap.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1BF1C6EA14A96673001D2F84 /* PhoneGap.plist */; };
 		1BF1C6EF14A96673001D2F84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1C6EE14A96673001D2F84 /* AppDelegate.m */; };
+		1BF583E714B84CCA00B1ADDB /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF583E614B84CCA00B1ADDB /* Default-Portrait~ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		1BF1C6ED14A96673001D2F84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		1BF1C6EE14A96673001D2F84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
 		1BF1C6F114A96673001D2F84 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
+		1BF583E614B84CCA00B1ADDB /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		1BF1C69C14A96672001D2F84 = {
 			isa = PBXGroup;
 			children = (
+				1BF583E614B84CCA00B1ADDB /* Default-Portrait~ipad.png */,
 				1B92316A14A96B0D00E7688E /* www */,
 				1BF1C6C814A96672001D2F84 /* Big2 */,
 				1BF1C6AD14A96672001D2F84 /* Frameworks */,
@@ -294,6 +297,7 @@
 				1BF1C6E914A96673001D2F84 /* Capture.bundle in Resources */,
 				1BF1C6EB14A96673001D2F84 /* PhoneGap.plist in Resources */,
 				1B92316B14A96B0D00E7688E /* www in Resources */,
+				1BF583E714B84CCA00B1ADDB /* Default-Portrait~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
