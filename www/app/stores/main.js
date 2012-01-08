@@ -18,53 +18,13 @@ app.stores.rounds.add({
 }, {
     p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
 }, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
+    p1Num:0,p2Num:3,p3Num:10,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
+}, {
+    p1Num:2,p2Num:0,p3Num:3,p4Num:1,p1Total:2,p2Total:5,p3Total:3,p4Total:9
 }, {
     p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
 }, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
+    p1Num:4,p2Num:13,p3Num:8,p4Num:0,p1Total:2,p2Total:5,p3Total:3,p4Total:9
 });
 // todo: end
 

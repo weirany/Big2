@@ -4,6 +4,10 @@
     text-align: center;
 }
 
+.moneyRow {
+    overflow: auto;
+    width: 100%
+}
 .moneyName {
     float: left;
     width: 50%;

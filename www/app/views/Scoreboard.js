@@ -75,10 +75,10 @@ app.views.Scoreboard = Ext.extend(Ext.Panel, {
         xtype: 'list',
         store: app.stores.rounds,
         itemTpl: [
-            '<div class="roundList">{p1Total}</div>',
-            '<div class="roundList">{p2Total}</div>',
-            '<div class="roundList">{p3Total}</div>',
-            '<div class="roundList">{p4Total}</div>'
+            '<div class="roundList"><tpl if="p1Num==0">-</tpl><tpl if="p1Num!=0">{p1Total}</tpl></div>',
+            '<div class="roundList"><tpl if="p2Num==0">-</tpl><tpl if="p2Num!=0">{p2Total}</tpl></div>',
+            '<div class="roundList"><tpl if="p3Num==0">-</tpl><tpl if="p3Num!=0">{p3Total}</tpl></div>',
+            '<div class="roundList"><tpl if="p4Num==0">-</tpl><tpl if="p4Num!=0">{p4Total}</tpl></div>'
         ], 
         listeners: {
             'itemTap': function(dataView, index) {

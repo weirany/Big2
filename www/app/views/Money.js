@@ -48,13 +48,13 @@ app.views.Money = Ext.extend(Ext.Panel, {
             }
             var names = app.stores.playerList.getAt(0);
             var txt = '';
-            txt += '<div><div class="moneyName">' + names.get('p1') + '</div>'
+            txt += '<div class="moneyRow"><div class="moneyName">' + names.get('p1') + '</div>'
                 + '<div class="moneyAmount">' + p1Balance + '</div></div>';
-            txt += '<div><div class="moneyName">' + names.get('p2') + '</div>'
+            txt += '<div class="moneyRow"><div class="moneyName">' + names.get('p2') + '</div>'
                 + '<div class="moneyAmount">' + p2Balance + '</div></div>';
-            txt += '<div><div class="moneyName">' + names.get('p3') + '</div>'
+            txt += '<div class="moneyRow"><div class="moneyName">' + names.get('p3') + '</div>'
                 + '<div class="moneyAmount">' + p3Balance + '</div></div>';
-            txt += '<div><div class="moneyName">' + names.get('p4') + '</div>'
+            txt += '<div class="moneyRow"><div class="moneyName">' + names.get('p4') + '</div>'
                 + '<div class="moneyAmount">' + p4Balance + '</div></div>';
             this.items.items[0].el.dom.children[0].innerHTML = txt;
         }
