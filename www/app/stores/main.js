@@ -12,21 +12,21 @@ app.stores.rounds = new Ext.data.Store({
     model: 'app.models.Round'
 });
 
-// todo: for testing only
-app.stores.rounds.add({
-    p1Num:0,p2Num:2,p3Num:3,p4Num:4,p1Total:0,p2Total:2,p3Total:3,p4Total:4 
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:0,p2Num:3,p3Num:10,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:0,p3Num:3,p4Num:1,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-}, {
-    p1Num:4,p2Num:13,p3Num:8,p4Num:0,p1Total:2,p2Total:5,p3Total:3,p4Total:9
-});
-// todo: end
+//// todo: for testing only
+//app.stores.rounds.add({
+//    p1Num:0,p2Num:2,p3Num:3,p4Num:4,p1Total:0,p2Total:2,p3Total:3,p4Total:4 
+//}, {
+//    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
+//}, {
+//    p1Num:0,p2Num:3,p3Num:10,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
+//}, {
+//    p1Num:2,p2Num:0,p3Num:3,p4Num:1,p1Total:2,p2Total:5,p3Total:3,p4Total:9
+//}, {
+//    p1Num:2,p2Num:3,p3Num:0,p4Num:5,p1Total:2,p2Total:5,p3Total:3,p4Total:9
+//}, {
+//    p1Num:4,p2Num:13,p3Num:8,p4Num:0,p1Total:2,p2Total:5,p3Total:3,p4Total:9
+//});
+//// todo: end
 
 app.stores.rounds.updateTotal = function(startIndex) {
     console.log('round.js -> updateTotal: ' + startIndex);
